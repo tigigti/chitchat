@@ -42,11 +42,21 @@ input {
             border: none;
             background-color: crimson;
             color: white;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            &:hover {
+                background-color: darken(crimson,20%);
+            }
         }
         @media screen and (max-width: 576px) {
             flex-direction: column;
             input {
                 flex: 1;
+                &:first-child {
+                    margin-bottom: 4px;
+                    background-color: lightgrey;
+                    padding: 0 4px;
+                }
             }
         }
     }
@@ -73,9 +83,12 @@ input {
     border: 2px solid darken(crimson,20%);
     background-color: crimson;
     color: white;
-    padding: 4px;
+    padding: 4px 8px;
     &:focus {
         outline: none;
+    }
+    &:hover {
+        background-color: darken(crimson,20%);
     }
 }
 
