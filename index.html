@@ -5,22 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <a rel="stylesheet" href="css/style.css"></a>
+    <link rel="stylesheet" href="./css/style.css"></link>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div class="chat-room">
+        <button id="settings-btn">Einstellungen</button>
+        <div id="chatfenster"></div>
 
-    <div id="chatfenster"></div>
+        <div class="input-fields">
+            <form id="chat-form" action="">
+                <input type="text">
+                <input type="submit" value="Absenden">
+            </form> 
+        </div> 
+    </div>
 
-    <form id="chat-form" action="">
-        <input type="text">
-        <input type="submit" value="Absenden">
-        <div>
-            <span>Name:</span>
+    <div id="modal-fenster">
+        <div class="user-settings">
+            <span>Name</span>
             <input id="user-name" type="text" value="User">
         </div>
-    </form>
+    </div>
 
+
+    <!-- sockets.io logic here -->
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
         var socket = io();
@@ -32,19 +40,44 @@
             e.preventDefault();
             socket.emit("chatMessage",{
                 msg: form.querySelector("input").value,
-                name: form.querySelector("#user-name").value
+                name: document.querySelector("#user-name").value
             });
             form.querySelector("input").value = "";
             return false;
         });
 
         socket.on("chatMessage",function(msg){
-            var newMessage = `
-                <p>${msg}</p>
-            `;
-            chatfenster.innerHTML += newMessage;
+            // <div></div>
+            var newMessage = document.createElement("div");
+            newMessage.className = "message";
+            // <div>{msg}</div>
+            var date = new Date(Date.now());
+            var currentTime = date.toLocaleTimeString("de-DE",{
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+
+            var timeElement = document.createElement("span");
+            timeElement.className = "message-time";
+            timeElement.textContent = currentTime;
+
+            var textElement = document.createElement("p");
+            textElement.className = "message-text";
+            textElement.textContent = msg;
+
+            newMessage.prepend(timeElement);
+            newMessage.append(textElement);
+
+            // Insert the new Message inside Chat Window
+            chatfenster.append(newMessage);
+
+            // Scroll to bottom of window
+            chatfenster.scrollTop = chatfenster.scrollHeight;
+
         });
 
     </script>
+
+    <script type="text/javascript" src="js/client.js"></script>
 </body>
 </html>
