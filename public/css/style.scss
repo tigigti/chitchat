@@ -3,16 +3,20 @@ body {
     padding: 0;
 }
 
+input {
+    box-sizing: border-box;
+    &:focus {
+        outline: none;
+    }
+}
+
 .chat-room {
     max-width: 590px;
     margin: auto;
     height: 100vh;
     position: relative;
 
-    input {
-        width: 100%;
-        box-sizing: border-box;
-    }
+    
 
     #chatfenster {
         //max-height: 500px;
@@ -30,11 +34,14 @@ body {
         flex-direction: row;
         input[type="text"]{
             flex: 3;
+            border: none;
+            border-bottom: 1px solid crimson;
         }
         input[type="submit"]{
             flex: 1;
-            background: none;
             border: none;
+            background-color: crimson;
+            color: white;
         }
         @media screen and (max-width: 576px) {
             flex-direction: column;
@@ -63,6 +70,13 @@ body {
     right: 0;
     top: 0;
     z-index: 999;
+    border: 2px solid darken(crimson,20%);
+    background-color: crimson;
+    color: white;
+    padding: 4px;
+    &:focus {
+        outline: none;
+    }
 }
 
 #modal-fenster {
