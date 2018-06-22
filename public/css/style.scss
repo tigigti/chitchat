@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.chat-room {
+    max-width: 590px;
+    margin: auto;
+    height: 100vh;
+    position: relative;
+
+    input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #chatfenster {
+        //max-height: 500px;
+        overflow-y: scroll;
+        height: 70%;
+        padding: 10px 4px;
+    }
+
+    .input-fields {
+        height: 20%;
+    }
+    #chat-form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        input[type="text"]{
+            flex: 3;
+        }
+        input[type="submit"]{
+            flex: 1;
+            background: none;
+            border: none;
+        }
+        @media screen and (max-width: 576px) {
+            flex-direction: column;
+            input {
+                flex: 1;
+            }
+        }
+    }
+
+    .message {
+        margin-bottom: 10px;
+        width: 100%;
+        .message-time {
+            color: darkgrey;
+            font-style: italic;
+        }
+        .message-text {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+}
+#settings-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+}
+
+#modal-fenster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: green;
+    max-width: 590px;
+    margin: auto;
+    opacity: 0;
+    z-index: -99999;
+    transition: opacity .3s ease;
+    &.visible {
+        opacity: 1;
+        z-index: 99;
+    }
+    .user-settings {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        color: white;
+    }
+}
