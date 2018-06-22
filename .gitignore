@@ -62,7 +62,3 @@ typings/
 
 # vscode
 .vscode
-
-# compiled files
-public/css/*.css
-public/css/*.css.map

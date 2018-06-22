@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+}
+
+.chat-room {
+  max-width: 590px;
+  margin: auto;
+  height: 100vh;
+  position: relative;
+}
+
+.chat-room #chatfenster {
+  overflow-y: scroll;
+  height: 70%;
+  padding: 10px 4px;
+}
+
+.chat-room .input-fields {
+  height: 20%;
+}
+
+.chat-room #chat-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-room #chat-form input[type="text"] {
+  flex: 3;
+  border: none;
+  border-bottom: 1px solid crimson;
+}
+
+.chat-room #chat-form input[type="submit"] {
+  flex: 1;
+  border: none;
+  background-color: crimson;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.chat-room #chat-form input[type="submit"]:hover {
+  background-color: #7f0c23;
+}
+
+@media screen and (max-width: 576px) {
+  .chat-room #chat-form {
+    flex-direction: column;
+  }
+  .chat-room #chat-form input {
+    flex: 1;
+  }
+  .chat-room #chat-form input:first-child {
+    margin-bottom: 4px;
+    background-color: lightgrey;
+    padding: 0 4px;
+  }
+}
+
+.chat-room .message {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.chat-room .message .message-time {
+  color: darkgrey;
+  font-style: italic;
+}
+
+.chat-room .message .message-text {
+  padding: 0;
+  margin: 0;
+}
+
+#settings-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  border: 2px solid #7f0c23;
+  background-color: crimson;
+  color: white;
+  padding: 4px 8px;
+}
+
+#settings-btn:focus {
+  outline: none;
+}
+
+#settings-btn:hover {
+  background-color: #7f0c23;
+}
+
+#modal-fenster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: green;
+  max-width: 590px;
+  margin: auto;
+  opacity: 0;
+  z-index: -99999;
+  transition: opacity .3s ease;
+}
+
+#modal-fenster.visible {
+  opacity: 1;
+  z-index: 99;
+}
+
+#modal-fenster .user-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */
