@@ -64,6 +64,7 @@ input:focus {
     margin-bottom: 4px;
     background-color: lightgrey;
     padding: 0 4px;
+    height: 24px;
   }
 }
 
